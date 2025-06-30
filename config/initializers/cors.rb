@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://slack-clone-react.onrender.com"
+    origins "https://messaging-app-mcdiz.onrender.com"
 
     resource "*",
       headers: :any,
