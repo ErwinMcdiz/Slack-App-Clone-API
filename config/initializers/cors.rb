@@ -7,11 +7,15 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://messaging-app-mcdiz.onrender.com"
+    origins 'http://localhost:5173', 'https://slack-clone-react.onrender.com'
 
-    resource "*",
+    resource '*',
       headers: :any,
-      methods: [ :get, :post, :put, :patch, :delete, :options, :head ],
-      credentials: false
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      expose: ['Authorization'],
+      max_age: 600
   end
 end
+
+
+

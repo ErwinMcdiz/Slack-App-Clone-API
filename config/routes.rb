@@ -18,9 +18,24 @@ Rails.application.routes.draw do
 
       resources :users
       resources :direct_messages
-        get "direct_messages/conversation/:user_id", to: "direct_messages#conversation"
+      get "direct_messages/conversation/:user_id", to: "direct_messages#conversation"
     end
   end
+
+  # ✅ Move this line *inside* the routes block:
+  match '*path', via: :options, to: ->(env) {
+    [
+      204,
+      {
+        'Content-Type' => 'text/plain',
+        'Access-Control-Allow-Origin' => env['HTTP_ORIGIN'] || '*',
+        'Access-Control-Allow-Methods' => 'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD',
+        'Access-Control-Allow-Headers' => 'Origin, Content-Type, Accept, Authorization, Token',
+        'Access-Control-Max-Age' => '1728000'
+      },
+      []
+    ]
+  }
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
