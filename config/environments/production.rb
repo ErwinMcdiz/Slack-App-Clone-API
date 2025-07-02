@@ -86,8 +86,7 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.require_master_key = true
 end
-Rails.application.configure do
-  # ... other settings ...
+
 
   config.middleware.insert_before 0, Rack::Cors do
     allow do
