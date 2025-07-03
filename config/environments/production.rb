@@ -84,14 +84,12 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  config.require_master_key = true
-end
+   config.require_master_key = true
 
-
+  
   config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins "http://localhost:5173", "https://slack-clone-react.onrender.com"
-
       resource "*",
         headers: :any,
         methods: [:get, :post, :put, :patch, :delete, :options, :head],
