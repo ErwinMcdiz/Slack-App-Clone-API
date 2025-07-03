@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # ✅ Move this line *inside* the routes block:
   match '*path', via: :options, to: ->(env) {
     [
       204,

@@ -86,15 +86,17 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
    config.require_master_key = true
 
-  
- config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    origins "http://localhost:5173", "https://salck-clone-messaging-app-mcdiz.onrender.com"
 
-    resource "*",
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head],
-      expose: ["Authorization"],
-      max_age: 600
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins "http://localhost:5173", "https://salck-clone-messaging-app-mcdiz.onrender.com"
+
+      resource "*",
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        expose: ["Authorization"],
+        max_age: 600
+    end
   end
-end
+end  
+
